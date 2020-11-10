@@ -4,9 +4,20 @@ namespace GameJam
 {
     class Program
     {
+        static bool gameRunning = true;
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            while (gameRunning)
+            {
+
+            }
+
+
+        }
+
+        static void sell()
+        {
+
         }
     }
 }
