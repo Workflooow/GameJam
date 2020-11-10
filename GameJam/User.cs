@@ -6,17 +6,21 @@ namespace GameJam
 {
     class User
     {
-        int cash;
-        int worth;
-        List<Valuta> possessedCurrencies = new List<Valuta>();
-
-        public void calcWorth()
+        List<Currency> possessedCurrencies = new List<Currency>();
+        public User()
         {
-            worth = 0;
-            foreach (var item in possessedCurrencies)
+
+        }
+
+        public double getWorthAs(Currency asCurrency)
+        {
+            double worth = 0;
+            foreach (var currency in possessedCurrencies)
             {
-                worth += item.value;
+                worth += currency.asOther(asCurrency).Value;
             }
+
+            return worth;
         }
     }
 }
