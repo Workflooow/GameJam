@@ -7,7 +7,7 @@ namespace GameJam
     class Currency
     {
         public string Name { get; private set; }
-        public double Value { get; private set; }
+        public int Value { get; private set; }
 
         private double _minValue;
         private double _maxValue;
@@ -53,11 +53,11 @@ namespace GameJam
         private double hardMaxValue;
 
         public Currency(string name, double minValue, double maxValue, double hardMinValue, double hardMaxValue)
-            : this(name, Game.nextDouble(minValue, maxValue), minValue, maxValue, hardMinValue, hardMaxValue)
+            : this(name, Convert.ToInt32(Game.nextDouble(minValue, maxValue)), minValue, maxValue, hardMinValue, hardMaxValue)
         {
         }
 
-        public Currency(string name, double value, double minValue, double maxValue, double hardMinValue, double hardMaxValue)
+        public Currency(string name, int value, double minValue, double maxValue, double hardMinValue, double hardMaxValue)
         {
             Name = name;
             Value = value;
@@ -70,12 +70,7 @@ namespace GameJam
 
         public void newRandomValue()
         {
-            this.Value = Game.nextDouble(MinValue, MaxValue);
-        }
-
-        public Currency asOther(Currency other)
-        {
-            return new Currency(Name, Value / other.Value, MinValue, MaxValue, hardMinValue, hardMaxValue);
+            this.Value = Convert.ToInt32(Game.nextDouble(MinValue, MaxValue));
         }
     }
 }
