@@ -51,6 +51,16 @@ namespace GameJam
             historicalValues.Add(hValues);
         }
 
+        public List<int> getLastElements(int currency, int elements)
+        {
+            List<int> ret = new List<int>();
+            for (int i = 0; i < elements; i++)
+            {
+                ret.Add(historicalValues[currency][(historicalValues.Count - elements) + i].Value);
+            }
+            return ret;
+        }
+
         public static double nextDouble(double min, double max)
         {
             double random = r.NextDouble();
