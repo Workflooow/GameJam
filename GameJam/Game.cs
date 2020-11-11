@@ -18,8 +18,8 @@ namespace GameJam
 
         public Game()
         {
-            allCurrencies.Add(new Currency("a", 0.1, 1));
-            allCurrencies.Add(new Currency("b", 0.1, 1));
+            allCurrencies.Add(new Currency("Gold", 0.1, 1, 15, 25));
+            allCurrencies.Add(new Currency("Silver", 0.1, 1, 10, 15));
             allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[0], nextDouble(0, 1)));
             allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[1], nextDouble(0, 1)));
             ownedMetals.Add(allCurrencies[0], 0);
@@ -43,7 +43,10 @@ namespace GameJam
                 hValues.Add(new Currency(item.Name,
                                          item.Value,
                                          item.MinValue,
-                                         item.MaxValue));
+                                         item.MaxValue,
+                                         0,
+                                         0
+                                         ));
                 item.newRandomValue();
             }
             historicalValues.Add(hValues);
@@ -66,7 +69,5 @@ namespace GameJam
             money += cSell.Value * amount;
             ownedMetals[cSell] += amount;
         }
-
-
     }
 }
