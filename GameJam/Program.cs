@@ -1,23 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace GameJam
 {
     class Program
     {
-        static bool gameRunning = true;
         static void Main(string[] args)
         {
-            while (gameRunning)
+            Game g = new Game();
+            while (Console.ReadLine() != "end")
             {
-
+                g.advanceTimeStep();
+                foreach (var item in g.allTrends)
+                {
+                    Console.WriteLine($"{item.Currency.Name} {item.Currency.Value} ");
+                }
             }
-
-
-        }
-
-        static void sell()
-        {
-
         }
     }
 }

@@ -7,6 +7,7 @@ namespace GameJam
     class User
     {
         List<Currency> possessedCurrencies = new List<Currency>();
+        
         public User()
         {
 

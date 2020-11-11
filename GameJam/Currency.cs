@@ -12,7 +12,7 @@ namespace GameJam
         public double MaxValue { get; set; }
 
         public Currency(string name, double minValue, double maxValue)
-            : this(name, nextDouble(minValue, maxValue), minValue, maxValue)
+            : this(name, Game.nextDouble(minValue, maxValue), minValue, maxValue)
         {
         }
 
@@ -26,18 +26,12 @@ namespace GameJam
 
         public void newRandomValue()
         {
-            this.Value = nextDouble(MinValue, MaxValue);
+            this.Value = Game.nextDouble(MinValue, MaxValue);
         }
 
         public Currency asOther(Currency other)
         {
             return new Currency(Name, Value / other.Value, MinValue, MaxValue);
-        }
-
-        private static double nextDouble(double min, double max)
-        {
-            double random = new Random().NextDouble();
-            return min + random * (max - min);
         }
     }
 }

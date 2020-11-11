@@ -8,6 +8,7 @@ namespace GameJam
     {
         public int TicksRemaining { get; private set; }
         public Currency Currency { get; private set; }
+        public double tWeight { get; set; }
 
         private double oldMin;
         private double oldMax;
@@ -32,10 +33,25 @@ namespace GameJam
         {
             TicksRemaining--;
 
+            Currency.MinValue *= tWeight;
+            Currency.MaxValue *= tWeight;
+
             if (TicksRemaining == 0)
             {
                 Currency.MinValue = oldMin;
                 Currency.MaxValue = oldMax;
+            }
+        }
+
+        public bool tickDone()
+        {
+            if (TicksRemaining == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
