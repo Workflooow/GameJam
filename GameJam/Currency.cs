@@ -9,42 +9,42 @@ namespace GameJam
         public string Name { get; private set; }
         public double Value { get; private set; }
 
-        private double minValue;
-        private double maxValue;
+        private double _minValue;
+        private double _maxValue;
 
         public double MinValue {
-            get => minValue;
+            get => _minValue;
             set
             {
                 if (value < hardMinValue)
                 {
-                    minValue = hardMinValue;
+                    _minValue = hardMinValue;
                 }
                 else if (value > hardMaxValue)
                 {
-                    minValue = hardMaxValue;
+                    _minValue = hardMaxValue;
                 }
                 else
                 {
-                    minValue = value;
+                    _minValue = value;
                 }
             }
         }
         public double MaxValue {
-            get => maxValue;
+            get => _maxValue;
             set
             {
                 if (value > hardMaxValue)
                 {
-                    maxValue = hardMaxValue;
+                    _maxValue = hardMaxValue;
                 }
-                else if (value < minValue)
+                else if (value < hardMinValue)
                 {
-                    maxValue = hardMinValue;
+                    _maxValue = hardMinValue;
                 }
                 else
                 {
-                    maxValue = value;
+                    _maxValue = value;
                 }
             }
         }
@@ -61,10 +61,11 @@ namespace GameJam
         {
             Name = name;
             Value = value;
-            MinValue = minValue;
-            MaxValue = maxValue;
             this.hardMinValue = hardMinValue;
             this.hardMaxValue = hardMaxValue;
+
+            MinValue = minValue;
+            MaxValue = maxValue;
         }
 
         public void newRandomValue()
