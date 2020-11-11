@@ -19,8 +19,8 @@ namespace GameJam
         {
             allCurrencies.Add(new Currency("Gold", 15, 25, 15, 25));
             allCurrencies.Add(new Currency("Silver", 10, 15, 10, 15));
-            allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[0], nextDouble(0, 1)));
-            allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[1], nextDouble(0, 1)));
+            allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[0], nextDouble(0.9, 1.1)));
+            allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[1], nextDouble(0.9, 1.1)));
             ownedMetals.Add(allCurrencies[0], 0);
             ownedMetals.Add(allCurrencies[1], 0);
         }
@@ -32,7 +32,7 @@ namespace GameJam
                 allTrends[i].nextTick();
                 if (allTrends[i].tickDone())
                 {
-                    allTrends[i] = new Trend(r.Next(1, 10), allTrends[i].Currency, nextDouble(0, 2.01));
+                    allTrends[i] = new Trend(r.Next(1, 10), allTrends[i].Currency, nextDouble(0.9, 1.1));
                 }
             }
 
