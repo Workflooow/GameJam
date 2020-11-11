@@ -8,20 +8,55 @@ namespace GameJam
     {
         public string Name { get; private set; }
         public double Value { get; private set; }
-        public double MinValue { get; set; }
-        public double MaxValue { get; set; }
 
-        public Currency(string name, double minValue, double maxValue)
-            : this(name, Game.nextDouble(minValue, maxValue), minValue, maxValue)
+        private double minValue;
+        private double maxValue;
+
+        public double MinValue {
+            get => minValue;
+            set
+            {
+                if (value < hardMinValue)
+                {
+                    minValue = hardMinValue;
+                }
+                else
+                {
+                    minValue = value;
+                }
+            }
+        }
+        public double MaxValue {
+            get => maxValue;
+            set
+            {
+                if (value > hardMaxValue)
+                {
+                    maxValue = hardMaxValue;
+                } 
+                else
+                {
+                    maxValue = value;
+                }
+            }
+        }
+
+        private double hardMinValue;
+        private double hardMaxValue;
+
+        public Currency(string name, double minValue, double maxValue, double hardMinValue, double hardMaxValue)
+            : this(name, Game.nextDouble(minValue, maxValue), minValue, maxValue, hardMinValue, hardMaxValue)
         {
         }
 
-        public Currency(string name, double value, double minValue, double maxValue)
+        public Currency(string name, double value, double minValue, double maxValue, double hardMinValue, double hardMaxValue)
         {
             Name = name;
             Value = value;
             MinValue = minValue;
             MaxValue = maxValue;
+            this.hardMinValue = hardMinValue;
+            this.hardMaxValue = hardMaxValue;
         }
 
         public void newRandomValue()
@@ -31,7 +66,7 @@ namespace GameJam
 
         public Currency asOther(Currency other)
         {
-            return new Currency(Name, Value / other.Value, MinValue, MaxValue);
+            return new Currency(Name, Value / other.Value, MinValue, MaxValue, hardMinValue, hardMaxValue);
         }
     }
 }
