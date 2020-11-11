@@ -20,6 +20,10 @@ namespace GameJam
                 {
                     minValue = hardMinValue;
                 }
+                else if (value > hardMaxValue)
+                {
+                    minValue = hardMaxValue;
+                }
                 else
                 {
                     minValue = value;
@@ -33,7 +37,11 @@ namespace GameJam
                 if (value > hardMaxValue)
                 {
                     maxValue = hardMaxValue;
-                } 
+                }
+                else if (value < minValue)
+                {
+                    maxValue = hardMinValue;
+                }
                 else
                 {
                     maxValue = value;
