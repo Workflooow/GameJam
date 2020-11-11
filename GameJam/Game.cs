@@ -11,13 +11,14 @@ namespace GameJam
         List<List<Currency>> historicalValues = new List<List<Currency>>();
         public int min = 10;
         public int max = 100;
+        static Random r = new Random();
 
         public Game()
         {
             allCurrencies.Add(new Currency("a", 0.1, 1));
             allCurrencies.Add(new Currency("b", 0.1, 1));
-            allTrends.Add(new Trend(new Random().Next(1, 10), allCurrencies[0], nextDouble(0, 1)));
-            allTrends.Add(new Trend(new Random().Next(1, 10), allCurrencies[1], nextDouble(0, 1)));
+            allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[0], nextDouble(0, 1)));
+            allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[1], nextDouble(0, 1)));
         }
 
         public void advanceTimeStep()
@@ -27,7 +28,7 @@ namespace GameJam
                 allTrends[i].nextTick();
                 if (allTrends[i].tickDone())
                 {
-                    allTrends[i] = new Trend(new Random().Next(1, 10), allTrends[i].Currency, nextDouble(0, 2.01));
+                    allTrends[i] = new Trend(r.Next(1, 10), allTrends[i].Currency, nextDouble(0, 2.01));
                 }
             }
 
@@ -45,7 +46,7 @@ namespace GameJam
 
         public static double nextDouble(double min, double max)
         {
-            double random = new Random().NextDouble();
+            double random = r.NextDouble();
             return min + random * (max - min);
         }
     }
