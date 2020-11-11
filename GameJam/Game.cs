@@ -9,17 +9,16 @@ namespace GameJam
         public List<Currency> allCurrencies = new List<Currency>();
         public List<Trend> allTrends = new List<Trend>();
         List<List<Currency>> historicalValues = new List<List<Currency>>();
-        public int min = 10;
-        public int max = 100;
+
         static Random r = new Random();
 
-        public Dictionary<Currency, int> ownedMetals;
+        public Dictionary<Currency, int> ownedMetals = new Dictionary<Currency, int>();
         public double money = 150;
 
         public Game()
         {
-            allCurrencies.Add(new Currency("Gold", 0.1, 1, 15, 25));
-            allCurrencies.Add(new Currency("Silver", 0.1, 1, 10, 15));
+            allCurrencies.Add(new Currency("Gold", 15, 25, 15, 25));
+            allCurrencies.Add(new Currency("Silver", 10, 15, 10, 15));
             allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[0], nextDouble(0, 1)));
             allTrends.Add(new Trend(r.Next(1, 10), allCurrencies[1], nextDouble(0, 1)));
             ownedMetals.Add(allCurrencies[0], 0);

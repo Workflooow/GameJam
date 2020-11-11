@@ -14,7 +14,7 @@ namespace GameJam
                 g.advanceTimeStep();
                 foreach (var item in g.allTrends)
                 {
-                    Console.WriteLine($"{item.Currency.Name} {item.Currency.Value} ");
+                    Console.WriteLine($"{item.Currency.Name} {item.Currency.Value} / {item.Currency.MinValue}, {item.Currency.MaxValue}");
                 }
             }
         }
