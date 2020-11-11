@@ -15,10 +15,11 @@ namespace GameJam
 
         public Trend(int howManyTicks, Currency currency, double trendWeight)
         {
-            if (trendWeight < 0)
+            if (trendWeight <= 0)
             {
                 trendWeight = 0.01;
             }
+            tWeight = trendWeight;
 
             TicksRemaining = howManyTicks;
             Currency = currency;
